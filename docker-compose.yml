@@ -41,6 +41,15 @@ services:
     depends_on:
       - web
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"   
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    depends_on:
+      - db
 
 volumes:
   db-data:
