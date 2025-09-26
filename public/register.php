@@ -33,25 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($msg = validMinLen($password)) {
         $errors['password'] = $msg;
     }
-}
 
-if (empty($errors)) {
-    try {
-        $pdo = new PDO($dsn, $user, $pass, $options);
 
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+    if (empty($errors)) {
+        try {
+            $pdo = new PDO($dsn, $user, $pass, $options);
 
-        $stmt = $pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
-        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':password', $hash, PDO::PARAM_STR);
-        $stmt->execute();
+            $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        echo "<p>登録が完了しました</p>";
-    } catch (PDOException $e) {
-        echo 'DBエラー:' . $e->getMessage();
+            $stmt = $pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':password', $hash, PDO::PARAM_STR);
+            $stmt->execute();
+
+            echo "<p>登録が完了しました</p>";
+        } catch (PDOException $e) {
+            echo 'DBエラー:' . $e->getMessage();
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +66,7 @@ if (empty($errors)) {
 
 <body>
     <h1>ユーザー登録</h1>
+    <a href="login.php">ログイン</a>
     <form action="register.php" method="POST" class="p-register__form">
         <div class="p-register__inputContainer">
             <label for="" class="p-register__label">メールアドレス</label>
@@ -81,8 +82,7 @@ if (empty($errors)) {
             <?php if (!empty($errors['password'])): ?>
                 <p class="c-error"><?php echo $errors['password']; ?></p>
             <?php endif; ?>
-            <input type="password" name="password" class="p-register__input"
-                value="<?php echo escapeHtml($_POST['password'] ?? ''); ?>">
+            <input type="password" name="password" class="p-register__input">
         </div>
 
         <div class="p-register__btnContainer">
