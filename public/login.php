@@ -1,8 +1,11 @@
 <?php
+session_start();
+
 require_once('functions.php');
 require_once('db.php');
+include 'partials/header.php';
 
-session_start();
+
 if (!empty($_SESSION['user_id'])) {
     header('Location:mypage.php');
     exit;
@@ -47,35 +50,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-
-<?php include 'partials/head.php'; ?>
-
-<body>
-    <h1>ログイン</h1>
+<section class="p-login">
+    <h1 class="p-login__title">ログイン</h1>
     <?php if (!empty($errors['login'])): ?>
         <p><?php echo escapeHtml($errors['login']) ?? ''; ?></p>
     <?php endif; ?>
-    <form action="login.php" method="POST">
-        <?php if (!empty($errors['email'])): ?>
-            <p><?php echo $errors['email']; ?></p>
-        <?php endif; ?>
-        <div>
-            <label for="">メールアドレス</label>
-            <input type="email" name="email" value="<?php echo escapeHtml($_POST['email'] ?? ''); ?>">
-        </div>
+    <div class="p-login__formField">
+        <form action="login.php" method="POST" class="p-login__form">
+            <div class="p-login__inputField">
+                <div class="p-login__labelField">
+                    <label for="" class="p-login__label">メールアドレス</label>
+                    <span class="c-require">必須</span>
+                </div>
+                <?php if (!empty($errors['email'])): ?>
+                    <p class="c-errMsg p-login__errMsg"><?php echo $errors['email']; ?></p>
+                <?php endif; ?>
+                <input type="email" name="email" class="c-input" value="<?php echo escapeHtml($_POST['email'] ?? ''); ?>">
+            </div>
 
-        <?php if (!empty($errors['password'])): ?>
-            <p><?php echo $errors['password']; ?></p>
-        <?php endif; ?>
-        <div>
-            <label for="">パスワード</label>
-            <input type="password" name="password">
-        </div>
-        <button type="submit">ログイン</button>
-    </form>
+
+            <div class="p-login__inputField">
+                <div class="p-login__labelField">
+                    <label for="" class="p-login__label">パスワード</label>
+                    <span class="c-require">必須</span>
+                </div>
+                <?php if (!empty($errors['password'])): ?>
+                    <p class="c-errMsg p-login__errMsg"><?php echo $errors['password']; ?></p>
+                <?php endif; ?>
+                <input type="password" name="password" class="c-input">
+            </div>
+            <div class="p-login__btnField">
+                <button type="submit" class="c-btn p-login__btn">ログイン</button>
+            </div>
+        </form>
+    </div>
     <a href="register.php">ユーザー登録ページへ</a>
-</body>
+</section>
 
-</html>
+<?php include 'partials/footer.php'; ?>

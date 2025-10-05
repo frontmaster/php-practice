@@ -127,6 +127,10 @@ input, button, textarea, select {
   opacity: 1;
 }
 
+.c-errMsg {
+  color: #d7003a;
+}
+
 .p-register {
   display: flex;
   flex-direction: column;
@@ -174,6 +178,61 @@ input, button, textarea, select {
   width: 500px;
   padding: 10px;
   font-size: 18px;
+}
+.p-register__errMsg {
+  margin-bottom: 10px;
+}
+
+.p-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.p-login__title {
+  text-align: center;
+  color: #404E72;
+  margin-bottom: 20px;
+}
+.p-login__formField {
+  display: flex;
+  justify-content: center;
+}
+.p-login__form {
+  border-radius: 10px;
+  width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: 400px;
+}
+.p-login__inputField {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.p-login__labelField {
+  margin-bottom: 10px;
+  display: flex;
+}
+.p-login__label {
+  width: 25%;
+}
+.p-login__btn {
+  background-color: #EB6137;
+  color: #fff;
+  width: 500px;
+  padding: 10px;
+  font-size: 18px;
+}
+.p-login__errMsg {
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

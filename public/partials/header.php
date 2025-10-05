@@ -15,8 +15,8 @@
     <header class="l-header">
         <div class="l-header__logo">test</div>
         <nav class="l-header__nav">
-            <a href="" class="l-header__link">ログイン</a>
-            <a href="" class="l-header__link">ユーザー登録</a>
+            <a href="../login.php" class="l-header__link">ログイン</a>
+            <a href="../register.php" class="l-header__link">ユーザー登録</a>
         </nav>
     </header>
     <main class="l-main">

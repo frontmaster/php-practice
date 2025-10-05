@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="c-require">必須</span>
                 </div>
                 <?php if (!empty($errors['email'])): ?>
-                    <p class="c-error"><?php echo $errors['email']; ?></p>
+                    <p class="c-errMsg p-register__errMsg"><?php echo $errors['email']; ?></p>
                 <?php endif; ?>
                 <input type="email" name="email" class="c-input"
                     value="<?php echo escapeHtml($_POST['email'] ??  ''); ?>">
@@ -65,12 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="c-require">必須</span>
                 </div>
                 <?php if (!empty($errors['password'])): ?>
-                    <p class="c-error"><?php echo $errors['password']; ?></p>
+                    <p class="c-errMsg p-register__errMsg"><?php echo $errors['password']; ?></p>
                 <?php endif; ?>
                 <input type="password" name="password" class="c-input">
             </div>
 
-            <div class="p-register__btnContainer">
+            <div class="p-register__btnField">
                 <button type="submit" class="c-btn p-register__btn">登録</button>
             </div>
         </form>

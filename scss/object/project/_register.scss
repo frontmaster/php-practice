@@ -9,7 +9,7 @@
         color: $main-color;
         margin-bottom: $space_xl;
     }
-    &__formField{
+    &__formField {
         display: flex;
         justify-content: center;
     }
@@ -26,27 +26,29 @@
         background-color: $white;
         height: 400px;
     }
-    &__inputField{
+    &__inputField {
         display: flex;
         justify-content: center;
         flex-direction: column;
         margin-bottom: $space_xl;
         width: 90%;
-        // height: 15%;
     }
-    
-    &__labelField{
+
+    &__labelField {
         margin-bottom: $space_m;
         display: flex;
     }
-    &__label{
+    &__label {
         width: 25%;
     }
-&__btn{
-   background-color: $sub-color1;
-   color: $white;
-   width: 500px;
-   padding: $space_m;
-   font-size: $font-size_l;
-}
+    &__btn {
+        background-color: $sub-color1;
+        color: $white;
+        width: 500px;
+        padding: $space_m;
+        font-size: $font-size_l;
+    }
+    &__errMsg{
+        margin-bottom: $space_m;
+    }
 }
