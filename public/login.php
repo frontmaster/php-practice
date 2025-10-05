@@ -1,12 +1,15 @@
 <?php
+require_once('functions.php');
+require_once('db.php');
+
 session_start();
 if (!empty($_SESSION['user_id'])) {
     header('Location:mypage.php');
     exit;
 }
 
-require_once('functions.php');
 
+$title = "ログイン";
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,21 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // DB接続
     if (empty($errors)) {
-        $host = 'db';
-        $db = 'practice';
-        $user = 'user';
-        $pass = 'password';
-        $charset = 'utf8mb4';
-
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ];
-
         try {
-            $pdo = new PDO($dsn, $user, $pass, $options);
-
             $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
@@ -61,11 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン</title>
-</head>
+<?php include 'partials/head.php'; ?>
 
 <body>
     <h1>ログイン</h1>
@@ -90,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit">ログイン</button>
     </form>
+    <a href="register.php">ユーザー登録ページへ</a>
 </body>
 
 </html>
