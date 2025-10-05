@@ -1,0 +1,30 @@
+@use "../foundation/variables" as *;
+
+.l-header{
+    height: 70px;
+    background-color: $sub-color1;
+    color: $main-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space_3l;
+    &__logo{
+        font-size: $font-size_xl;
+        font-weight: bold;
+        width: 10%;
+        display: flex;
+        justify-content: center;
+    }
+    &__nav{
+        display: flex;
+        justify-content: space-around;
+        width: 15%;
+        font-weight: bold;
+    }
+    &__link{
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

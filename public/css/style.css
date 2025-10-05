@@ -1,0 +1,179 @@
+html,
+body {
+  width: 100%;
+  color: #444;
+  background-color: #f6f5f5;
+  line-height: 150%;
+}
+
+p,
+a {
+  -webkit-font-smoothing: antialiased;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 150%;
+}
+
+a {
+  color: #444;
+  text-decoration: none;
+}
+
+a:hover {
+  transition: 0.3s;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts */
+input, button, textarea, select {
+  font: inherit;
+}
+
+.l-header {
+  height: 70px;
+  background-color: #EB6137;
+  color: #404E72;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.l-header__logo {
+  font-size: 24px;
+  font-weight: bold;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+.l-header__nav {
+  display: flex;
+  justify-content: space-around;
+  width: 15%;
+  font-weight: bold;
+}
+.l-header__link {
+  text-decoration: none;
+}
+.l-header__link:hover {
+  text-decoration: underline;
+}
+
+.c-input {
+  height: 44px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.c-require {
+  background-color: #d7003a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: flex;
+}
+
+.c-btn {
+  border-radius: 3px;
+  border: none;
+  box-shadow: 3px 3px 3px #b8b8b8;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0.9;
+}
+.c-btn:hover {
+  opacity: 1;
+}
+
+.p-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.p-register__title {
+  text-align: center;
+  color: #404E72;
+  margin-bottom: 20px;
+}
+.p-register__formField {
+  display: flex;
+  justify-content: center;
+}
+.p-register__form {
+  border-radius: 10px;
+  width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: 400px;
+}
+.p-register__inputField {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.p-register__labelField {
+  margin-bottom: 10px;
+  display: flex;
+}
+.p-register__label {
+  width: 25%;
+}
+.p-register__btn {
+  background-color: #EB6137;
+  color: #fff;
+  width: 500px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=style.css.map */

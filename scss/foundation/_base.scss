@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+html,
+body {
+    width: 100%;
+    color: $font-color_default;
+    background-color: $base-color;
+    line-height: 150%;
+}
+
+p,
+a {
+    -webkit-font-smoothing: antialiased;
+    font-family: $font-family-noto-sans-jp;
+    line-height: 150%;
+}
+
+a {
+    color: $font-color_default;
+    text-decoration: none;
+}
+
+a:hover {
+    transition: 0.3s;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
