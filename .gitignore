@@ -3,3 +3,4 @@
 /public/node_modules
 /.env
 /db-data
+/public/css/style.css.map
