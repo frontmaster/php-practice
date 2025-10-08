@@ -3,7 +3,7 @@ session_start();
 
 require_once('functions.php');
 require_once('db.php');
-include 'partials/header.php';
+
 
 
 if (!empty($_SESSION['user_id'])) {
@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+include 'partials/header.php';
 ?>
 <section class="p-login">
     <h1 class="p-login__title">ログイン</h1>

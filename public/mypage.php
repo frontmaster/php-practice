@@ -1,20 +1,19 @@
 <?php
 session_start();
 
-if(empty($_SESSION['user_id'])){
+$title = "マイページ";
+
+if (empty($_SESSION['user_id'])) {
     header('Location:login.php');
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ</title>
-</head>
+<?php include 'partials/header.php'; ?>
 
 <body>
     <h1>マイページ</h1>
