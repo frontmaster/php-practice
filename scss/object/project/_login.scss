@@ -1,0 +1,54 @@
+@use "../../foundation/variables.scss" as *;
+
+.p-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+        text-align: center;
+        color: $main-color;
+        margin-bottom: $space_xl;
+    }
+    &__formField {
+        display: flex;
+        justify-content: center;
+    }
+    &__form {
+        border-radius: 10px;
+        width: 600px;
+        padding: $space_xl;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background-color: $white;
+        height: 400px;
+    }
+    &__inputField {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: $space_xl;
+        width: 90%;
+    }
+
+    &__labelField {
+        margin-bottom: $space_m;
+        display: flex;
+    }
+    &__label {
+        width: 25%;
+    }
+    &__btn {
+        background-color: $sub-color1;
+        color: $white;
+        width: 500px;
+        padding: $space_m;
+        font-size: $font-size_l;
+    }
+    &__errMsg{
+        margin-bottom: $space_m;
+    }
+}

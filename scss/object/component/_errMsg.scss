@@ -1,0 +1,5 @@
+@use "../../foundation/variables.scss" as *;
+
+.c-errMsg{
+    color: $alert-color;
+}

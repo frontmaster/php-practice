@@ -235,4 +235,56 @@ input, button, textarea, select {
   margin-bottom: 10px;
 }
 
+.p-password-change {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.p-password-change__title {
+  text-align: center;
+  color: #404E72;
+  margin-bottom: 20px;
+}
+.p-password-change__formField {
+  display: flex;
+  justify-content: center;
+}
+.p-password-change__form {
+  border-radius: 10px;
+  width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: 400px;
+}
+.p-password-change__inputField {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.p-password-change__labelField {
+  margin-bottom: 10px;
+  display: flex;
+}
+.p-password-change__label {
+  width: 25%;
+}
+.p-password-change__btn {
+  background-color: #EB6137;
+  color: #fff;
+  width: 500px;
+  padding: 10px;
+  font-size: 18px;
+}
+.p-password-change__errMsg {
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */
