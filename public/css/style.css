@@ -252,21 +252,21 @@ input, button, textarea, select {
 .p-password-change__form {
   border-radius: 10px;
   width: 600px;
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  height: 400px;
 }
 .p-password-change__inputField {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
+  padding-top: 4px;
   width: 90%;
 }
 .p-password-change__labelField {
@@ -274,7 +274,14 @@ input, button, textarea, select {
   display: flex;
 }
 .p-password-change__label {
-  width: 25%;
+  width: 40%;
+  margin-bottom: 10px;
+}
+.p-password-change__input {
+  margin-bottom: 15px;
+}
+.p-password-change__btnField {
+  margin-top: 15px;
 }
 .p-password-change__btn {
   background-color: #EB6137;
