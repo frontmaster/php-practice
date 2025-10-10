@@ -18,6 +18,7 @@ if (empty($_SESSION['user_id'])) {
 <body>
     <h1>マイページ</h1>
     <a href="logout.php">ログアウト</a>
+    <a href="password_change.php">パスワード変更</a>
 </body>
 
 </html>

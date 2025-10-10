@@ -10,6 +10,11 @@ function validRequired($str)
     return null;
 }
 
+function validMinLength($str, $max){
+    if($str <  $max){
+        return MSG_PASS_MINLEN;
+    }
+}
 // Email形式チェック
 function validEmail($str)
 {
@@ -65,40 +70,33 @@ function changePassword($pdo, $userId, $current, $new, $confirm)
     $errors = [];
 
     // 未入力チェック
-    if (trim($current) === '') {
-        $errors['current_password'] = "現在のパスワードを入力してください。";
-    }
+    if (trim($current) === '') $errors['current_password'] = "現在のパスワードを入力してください。";
+    if (trim($new) === '') $errors['new_password'] = "新しいパスワードを入力してください。";
+    if (trim($confirm) === '') $errors['confirm_password'] = "確認パスワードを入力してください。";
 
-    if (trim($new) === '') {
-        $errors['new_password'] = "新しいパスワードを入力してください。";
-    }
+    if (!empty($errors)) return $errors;
 
-    if (trim($confirm) === '') {
-        $errors['confirm_password'] = "確認用パスワードを入力してください。";
-    }
-
-    if (!empty($errors)) {
-        return $errors;
-    }
-
-    // 現在のパスワード確認
+    // DB からユーザー情報取得
     $stmt = $pdo->prepare("SELECT password FROM users WHERE id = :id");
     $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
     $stmt->execute();
-    $user = $stmt->fetch();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user || !password_verify($current, $user['password'])) {
-        $errors[] = "現在のパスワードが違います。";
+    if (!$user) {
+        $errors['current_password'] = "ユーザーが存在しません。";
+        return $errors;
     }
 
-    if ($new !== $confirm) {
-        $errors[] = "新しいパスワードが一致しません。";
+    // パスワード不一致チェック
+    if (!password_verify($current, $user['password'])) {
+        $errors['current_password'] = "現在のパスワードが違います。";
     }
 
-    if (strlen($new) < 8) {
-        $errors[] = "新しいパスワードは8文字以上で入力してください。";
-    }
+    // 新しいパスワード
+    if ($new !== $confirm) $errors['confirm_password'] = "新しいパスワードが一致しません。";
+    if (mb_strlen($new) < 8) $errors['new_password'] = "新しいパスワードは8文字以上で入力してください。";
 
+    // 更新
     if (empty($errors)) {
         $hashed = password_hash($new, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("UPDATE users SET password = :password WHERE id = :id");
@@ -106,6 +104,7 @@ function changePassword($pdo, $userId, $current, $new, $confirm)
         $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
     }
+
     return $errors;
 }
 

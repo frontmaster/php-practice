@@ -5,8 +5,10 @@ services:
     build: ./php
     volumes:
       - ./public:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
+      - mailhog
 
   web:
     image: nginx:latest
@@ -52,5 +54,10 @@ services:
     depends_on:
       - db
 
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8026:8025"
+      - "1026:1026"
 volumes:
   db-data:
