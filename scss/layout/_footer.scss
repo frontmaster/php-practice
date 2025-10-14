@@ -1,0 +1,14 @@
+@use "../foundation/variables" as *;
+
+.l-footer {
+    height: 70px;
+    background-color: $sub-color1;
+    color: $main-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__logo {
+        color: $white;
+        font-weight: bold;
+    }
+}
