@@ -70,7 +70,7 @@ include 'partials/header.php';
             </div>
 
 
-            <div class="p-login__inputField">
+            <div class="p-login__inputField--pass">
                 <div class="p-login__labelField">
                     <label for="" class="p-login__label">パスワード</label>
                     <span class="c-require">必須</span>
@@ -83,9 +83,10 @@ include 'partials/header.php';
             <div class="p-login__btnField">
                 <button type="submit" class="c-btn p-login__btn">ログイン</button>
             </div>
+            <a href="forgot_password.php" class="p-login__link">パスワードを忘れた方はこちら</a>
         </form>
     </div>
-    <a href="register.php">ユーザー登録ページへ</a>
+    
 </section>
 
 <?php include 'partials/footer.php'; ?>

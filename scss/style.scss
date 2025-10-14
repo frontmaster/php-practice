@@ -6,6 +6,8 @@
 
 @use "layout/header";
 
+@use "layout/footer";
+
 @use "object/component/_input";
 
 @use "object/component/_require";
@@ -19,3 +21,5 @@
 @use "object/project/login";
 
 @use "object/project/password_change";
+
+@use "object/project/forgot_password";

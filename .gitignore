@@ -4,3 +4,4 @@
 /.env
 /db-data
 /public/css/style.css.map
+/public/vendor/

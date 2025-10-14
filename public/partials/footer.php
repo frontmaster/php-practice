@@ -1,6 +1,6 @@
 </main>
 <footer class="l-footer">
-    <p>copyright</p>
+    <p class="l-footer__logo">copyright</p>
 </footer>
 </body>
 
