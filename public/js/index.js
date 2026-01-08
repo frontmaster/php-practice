@@ -1,49 +1,32 @@
-const testReturn = () => {
-  return "ここで終了";
-
-  console.log("これは表示される？");
-};
-
-const res = testReturn();
-
-console.log(res);
-
-const checkType = (value) => {
-  if (typeof value !== "number") {
-    return "数値を入力してください";
-  } else {
-    return `${value}は正常な数値です`;
+const judgeScore = (value) => {
+  if (value >= 60) {
+    return "合格";
   }
+  return "不合格";
 };
 
-console.log(checkType("あ"));
-console.log(checkType(10));
-
-const noReturn = () => {
-  const a = 10;
-  const b = 20;
-  const c = a + b;
-};
-
-const res6 = noReturn();
-console.log(res6);
-
-const validate = (value) => {
-  if (value === null) {
-    return "値がありません";
+const getUserType = (value) => {
+  if (value === "admin") {
+    return "管理者";
   }
-  if (typeof value !== "number") {
-    return "数値を入力してください";
-  } else {
-    return "OK";
+  if (value === "user") {
+    return "一般ユーザー";
   }
+  return "ゲスト";
 };
-console.log(validate(null));
-// "値がありません"
 
-console.log(validate("10"));
-// "数値を入力してください"
+const checkTeam = (value) => {
+  if (value === "燕") {
+    return "ヤクルトです";
+  }
+  if (value === "虎") {
+    return "タイガースです";
+  }
+  return "そのチームはありません";
+};
 
-console.log(validate(10));
-// "OK"
-
+module.exports = {
+  judgeScore,
+  getUserType,
+  checkTeam
+};
