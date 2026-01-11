@@ -1,32 +1,44 @@
-const judgeScore = (value) => {
-  if (value >= 60) {
-    return "合格";
+const checkDay = (value) => {
+  if (value === "月") {
+    return "月曜日です";
   }
-  return "不合格";
+  if (value === "火") {
+    return "火曜日です";
+  }
+
+  if (value === "水") {
+    return "水曜日です";
+  }
+  return "対象外の曜日です";
 };
 
-const getUserType = (value) => {
-  if (value === "admin") {
-    return "管理者";
+const checkFruits = (value) => {
+  if (value === "りんご") {
+    return "りんごです";
   }
-  if (value === "user") {
-    return "一般ユーザー";
+  if (value === "ばなな") {
+    return "ばななです";
   }
-  return "ゲスト";
+  if(value === "みかん"){
+    return "みかんです";
+  }
+  return "対象外の果物です";
 };
 
-const checkTeam = (value) => {
-  if (value === "燕") {
-    return "ヤクルトです";
-  }
-  if (value === "虎") {
-    return "タイガースです";
-  }
-  return "そのチームはありません";
-};
-
+const checkStatus = (value) =>{
+    if(value === "success"){
+        return "成功です";
+    }
+    if(value === "error"){
+        return "失敗です";
+    }
+    if(value === "loading"){
+       return "処理中です";
+    }
+    return "不明な状態です";
+}
 module.exports = {
-  judgeScore,
-  getUserType,
-  checkTeam
+  checkDay,
+  checkFruits,
+  checkStatus
 };

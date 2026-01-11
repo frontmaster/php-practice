@@ -1,48 +1,70 @@
-const check = require("./index.js");
-describe("数値判定のテスト", () => {
-  test("60以上の場合", () => {
-    const res = check.judgeScore(60);
-    expect(res).toEqual("合格");
+const { getType } = require("typechecker");
+
+describe("型チェック（数値、関数）", () => {
+  test("数値の場合", () => {
+    const value = 100;
+    const res = getType(value);
+    expect(res).toEqual("number");
   });
-  test("60未満の場合", () => {
-    const res = check.judgeScore(59);
-    expect(res).toEqual("不合格");
-  });
-  test("notを使ったテスト", () => {
-    const res = check.judgeScore(80);
-    expect(res).not.toEqual("不合格");
+  test("関数の場合", () => {
+    const value = (x) => x + 3;
+    const res = getType(value);
+    expect(res).toEqual("function");
   });
 });
 
-describe("ユーザー判定のテスト", () => {
-  test("adminの場合", () => {
-    const res = check.getUserType("admin");
-    expect(res).toEqual("管理者");
+describe("型チェック（配列、オブジェクト）", () => {
+  test("配列の場合", () => {
+    const value = [1, 2, 3];
+    const res = getType(value);
+    expect(res).toEqual("array");
   });
-
-  test("userの場合", () => {
-    const res = check.getUserType("user");
-    expect(res).toEqual("一般ユーザー");
-  });
-
-  test("adminとuser以外の場合", () => {
-    const res = check.judgeScore("犬");
-    expect(res).not.toEqual("管理者");
+  test("オブジェクトの場合", () => {
+    const value = { name: "ken" };
+    const res = getType(value);
+    expect(res).toEqual("object");
   });
 });
 
-describe("野球チームのテスト", () => {
-  test("燕の場合", () => {
-    const res = check.checkTeam("燕");
-    expect(res).toEqual("ヤクルトです");
-  });
-  test("虎の場合", () => {
-    const res = check.checkTeam("虎");
-    expect(res).toEqual("タイガースです");
+describe("型チェック（null、undefined）", () => {
+  test("nullの場合", () => {
+    const value = null;
+    const res = getType(value);
+    expect(res).toEqual("null");
   });
 
-  test("燕、虎以外の場合",()=>{
-    const res = check.checkTeam("馬");
-    expect(res).not.toEqual("タイガースです");
-  })
+  test("undefinedの場合", () => {
+    const value = undefined;
+    const res = getType(value);
+    expect(res).toEqual("undefined");
+  });
+});
+
+describe("型チェック（boolean）", () => {
+  test("trueの場合", () => {
+    const value = true;
+    const res = getType(value);
+    expect(res).toEqual("boolean");
+  });
+  test("falseの場合", () => {
+    const value = false;
+    const res = getType(value);
+    expect(res).not.toEqual("string");
+  });
+});
+
+describe("型チェック（日付）", () => {
+  test("Dateの場合", () => {
+    const value = new Date();
+    const res = getType(value);
+    expect(res).toEqual("date");
+  });
+});
+
+describe("型チェック（NaN）", () => {
+  test("NaNの場合", () => {
+    const value = NaN;
+    const res = getType(value);
+    expect(res).toEqual("number");
+  });
 });
