@@ -1,44 +1,89 @@
 const { getType } = require("typechecker");
 
-describe("mapのテスト", () => {
-  const numbers = [2, 4, 6];
-  const res = numbers.map((num) => {
-    return num * 3;
+describe("問題1", () => {
+  const judgeScore = (score) => {
+    if (score >= 80) {
+      return "A";
+    }
+    if (score >= 60 && score < 80) {
+      return "B";
+    }
+    return "C";
+  };
+  it("80点以上はA", () => {
+    expect(judgeScore(80)).toEqual("A");
   });
-  it("配列の数値を3倍にする", () => {
-    expect(res).toEqual([6, 12, 18]);
+  it("60点以上80点未満はB", () => {
+    expect(judgeScore(60)).toEqual("B");
   });
-});
-
-describe("mapのテスト(文字列)", () => {
-  const strings = ["sato", "yamada"];
-  const res = strings.map((name) => {
-    return `Mr.${name}`;
-  });
-  test("Mr.をつける", () => {
-    expect(res).toEqual(["Mr.sato", "Mr.yamada"]);
-  });
-});
-
-describe("map length", () => {
-  const names = ["ken", "tanaka", "oda"];
-  const res = names.map((name) => {
-    return name.length;
-  });
-  test("文字列の長さ", () => {
-    expect(res).toEqual([3, 6, 3]);
+  it("60点未満はC", () => {
+    expect(judgeScore(59)).toEqual("C");
   });
 });
 
-describe("map object", () => {
+describe("問題2", () => {
+  const prices = [100, 200, 300];
+  const res = prices.map((price) => {
+    return Math.round(price * 1.1);
+  });
+  it("税込価格に変換", () => {
+    expect(res).toEqual([110, 220, 330]);
+  });
+});
+
+describe("問題3", () => {
+  const names = ["ken", "tanaka", "joe", "suzuki"];
+  const res = names.filter((name) => {
+    return name.length >= 5;
+  });
+  it("5文字以上の名前を抽出", () => {
+    expect(res).toEqual(["tanaka", "suzuki"]);
+  });
+});
+
+describe("問題4", () => {
+  const utils = {
+    formatUser: (name) => {
+      return `User:${name}`;
+    },
+  };
+  const users = ["ken", "tanaka"];
+  const res = users.map((name) => {
+    return utils.formatUser(name);
+  });
+  it("Userを付ける", () => {
+    expect(res).toEqual(["User:ken", "User:tanaka"]);
+  });
+});
+
+describe("問題5", () => {
   const users = [
     { name: "ken", age: 18 },
     { name: "tanaka", age: 25 },
+    { name: "sato", age: 30 },
   ];
-  const res = users.map((user) => {
+  const selectAge = users.filter((user) => {
+    return user.age >= 20;
+  });
+  const selectName = selectAge.map((user) => {
     return user.name;
   });
-  it("nameのみ", () => {
-    expect(res).toEqual(["ken", "tanaka"]);
+  it("20歳以上の名前一覧", () => {
+    expect(selectName).toEqual(["tanaka", "sato"]);
+  });
+});
+
+describe("問題6", () => {
+  const obj = {
+    calc: (a, b) => {
+      return a + b;
+    },
+  };
+  it("calcは関数型", () => {
+    const res = getType(obj.calc);
+    expect(res).toEqual("function");
+  });
+  it("計算結果", () => {
+    expect(obj.calc(7, 8)).toEqual(15);
   });
 });
