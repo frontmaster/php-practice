@@ -1,41 +1,46 @@
 // const { getType } = require("typechecker");
 
-const users = [
+const apiResponse = [
   {
     id: 1,
     name: "田中",
-    isActive: true,
-    posts: [
-      { id: 101, title: "JS", isPublished: true },
-      { id: 102, title: "Vue", isPublished: false },
+    role: "member",
+    tasks: [
+      { id: 101, status: "todo" },
+      { id: 102, status: "done" },
     ],
   },
   {
     id: 2,
     name: "佐藤",
-    isActive: false,
-    posts: [{ id: 103, title: "Laravel", isPublished: true }],
+    role: "admin",
+    tasks: [],
   },
   {
     id: 3,
     name: "鈴木",
-    isActive: true,
-    posts: [],
+    role: "member",
+    tasks: [{ id: 103, status: "todo" }],
   },
 ];
 
-const judgeUsers = users
-  .filter((user) => {
-    return user.isActive === true;
+const selectMembers = apiResponse
+  .filter((response) => {
+    return response.role === "member";
   })
-  .map((user) => {
-    const count = user.posts.filter((post) => {
-      return post.isPublished === true;
+  .map((response) => {
+    const todoNumber = response.tasks.filter((task) => {
+      return task.status === "todo";
     });
     return {
-      id: user.id,
-      name: user.name,
-      publishPostCount: count.length,
+      id: response.id,
+      name: response.name,
+      todoCount: todoNumber.length,
     };
   });
-console.log(judgeUsers);
+
+const judgeMember = selectMembers.filter((member) => {
+  return member.todoCount > 0;
+});
+
+console.log(judgeMember);
