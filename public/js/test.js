@@ -1,19 +1,12 @@
-const tasks = [
-  { id: 1, priority: "high" },
-  { id: 2, priority: "low" },
-  { id: 3, priority: "high" },
-  { id: 4, priority: "low" },
-  { id: 5, priority: "high" },
-];
+const nums = [1, 2, 2, 3, 3, 3, 4];
 
-const result = tasks.reduce((acc, task) => {
-  if (task.priority === "high") {
-    acc.high = (acc.high ?? 0) + 1;
-  }
-  if (task.priority === "low") {
-    acc.low = (acc.low ?? 0) + 1;
-  }
-  return acc;
-}, {});
+const result = nums
+  .filter((num) => {
+    return num >= 2;
+  })
+  .reduce((acc, num) => {
+    acc[num] = (acc[num] ?? 0) + 1;
+    return acc;
+  }, {});
 
-console.log(result);
+  console.log(result);
