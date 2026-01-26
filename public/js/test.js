@@ -1,17 +1,11 @@
-const orders = [
-  { id: 1, userId: 10, amount: 1200, status: "completed" },
-  { id: 2, userId: 11, amount: 800, status: "pending" },
-  { id: 3, userId: 10, amount: 500, status: "completed" },
-  { id: 4, userId: 12, amount: 2000, status: "completed" },
-  { id: 5, userId: 11, amount: 700, status: "completed" },
-];
+const words = ["js", "vue", "js", "react", "vue", "js"];
 
-const result = orders
-  .filter((order) => {
-    return order.status === "completed" && order.amount >= 1000;
-  })
-  .reduce((acc, order) => {
-    acc[order.userId] = (acc[order.userId] ?? 0) + order.amount;
-    return acc;
-  }, {});
+// reduce を使って各単語の出現回数をオブジェクトにしてください
+// 期待結果: { js: 3, vue: 2, react: 1 }
+
+const result = words.reduce((acc, word) => {
+  acc[word] = (acc[word] ?? 0) + 1;
+  return acc;
+}, {});
+
 console.log(result);
