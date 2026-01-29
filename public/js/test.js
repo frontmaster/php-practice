@@ -1,18 +1,20 @@
-const members = [
-  { id: 1, name: "田中", role: "admin", disabledAt: null },
-  { id: 2, name: "佐藤", role: "user", disabledAt: "2024-05-01" },
-  { id: 3, name: "鈴木", role: "user", disabledAt: null },
-  { id: 4, name: "高橋", role: "admin", disabledAt: null },
+const posts = [
+  { id: 1, title: "JS基礎", publishedAt: "2025-01-01", isDraft: false },
+  { id: 2, title: "Vue入門", publishedAt: null, isDraft: true },
+  { id: 3, title: "Laravel実務", publishedAt: "2025-01-10", isDraft: false },
 ];
 
-const result = (members) => {
-  return members
-    .filter((member) => {
-      return member.disabledAt === null && member.role === "user";
+const result = (posts) => {
+  return posts
+    .filter((post) => {
+      return post.isDraft === false;
     })
-    .map((member) => {
-      return { value: member.id, label: member.name };
+    .sort((a, b) => {
+      return new Date(a.publishedAt) - new Date(b.publishedAt);
+    })
+    .map((post) => {
+      return { id: post.id, title: post.title };
     });
 };
 
-console.log(result(members));
+console.log(result(posts));
