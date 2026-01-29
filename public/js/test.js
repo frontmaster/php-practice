@@ -1,36 +1,18 @@
-const response = {
-  status: 200,
-  data: {
-    orders: [
-      { id: 1, amount: "1200", currency: "JPY", isCancelled: false },
-      { id: 2, amount: null, currency: "JPY", isCancelled: false },
-      { id: 3, amount: "3000", currency: "USD", isCancelled: false },
-      { id: 4, amount: "500", currency: "JPY", isCancelled: true },
-      { id: 5, amount: "", currency: "JPY", isCancelled: false },
-      { id: 6, amount: 2500, currency: "JPY", isCancelled: false },
-    ],
-  },
-};
+const members = [
+  { id: 1, name: "田中", role: "admin", disabledAt: null },
+  { id: 2, name: "佐藤", role: "user", disabledAt: "2024-05-01" },
+  { id: 3, name: "鈴木", role: "user", disabledAt: null },
+  { id: 4, name: "高橋", role: "admin", disabledAt: null },
+];
 
-const getLargeJpyAmounts = (response) => {
-  if (response.status !== 200) {
-    return [];
-  }
-  return response.data.orders
-    .filter((order) => {
-      const parsedAmount = Number(order.amount);
-      return (
-        order.isCancelled === false &&
-        order.currency === "JPY" &&
-        order.amount !== null &&
-        order.amount !== "" &&
-        Number.isFinite(parsedAmount) &&
-        parsedAmount >= 2000
-      );
+const result = (members) => {
+  return members
+    .filter((member) => {
+      return member.disabledAt === null && member.role === "user";
     })
-    .map((order) => {
-      return order.amount;
+    .map((member) => {
+      return { value: member.id, label: member.name };
     });
 };
 
-console.log(getLargeJpyAmounts(response));
+console.log(result(members));
