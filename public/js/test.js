@@ -1,18 +1,22 @@
-const logs = [
-  { id: 1, type: "error", resolvedAt: null },
-  { id: 2, type: "info", resolvedAt: "2025-01-01" },
-  { id: 3, type: "error", resolvedAt: null },
-  { id: 4, type: "warn", resolvedAt: null },
+
+const users = [
+  { id: 1, name: "佐藤", age: 28, isActive: true },
+  { id: 2, name: "鈴木", age: 17, isActive: true },
+  { id: 3, name: "高橋", age: 35, isActive: false },
+  { id: 4, name: "田中", age: 42, isActive: true },
 ];
 
-const result = (logs) => {
-  return logs.reduce((acc, log) => {
-    if (log.resolvedAt !== null) {
-      return acc;
-    }
-    acc[log.type] = (acc[log.type] ?? 0) + 1;
-    return acc;
-  }, {});
+const formatActiveAdultUsers = (users) => {
+  return users
+    .filter((user) => {
+      return user.isActive && user.age >= 20;
+    })
+    .sort((a, b) => {
+      return a.age - b.age;
+    })
+    .map((user) => {
+      return { id: user.id, label: `${user.name}（${user.age}）` };
+    });
 };
 
-console.log(result(logs));
+console.log(formatActiveAdultUsers(users));
