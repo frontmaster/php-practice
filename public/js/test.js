@@ -1,22 +1,50 @@
-
-const users = [
-  { id: 1, name: "佐藤", age: 28, isActive: true },
-  { id: 2, name: "鈴木", age: 17, isActive: true },
-  { id: 3, name: "高橋", age: 35, isActive: false },
-  { id: 4, name: "田中", age: 42, isActive: true },
+const articles = [
+  {
+    id: 1,
+    title: "JS入門",
+    likes: 10,
+    isPublished: true,
+    publishedAt: "2025-01-10",
+  },
+  {
+    id: 2,
+    title: "React実践",
+    likes: 0,
+    isPublished: true,
+    publishedAt: "2025-01-05",
+  },
+  {
+    id: 3,
+    title: "Vue設計",
+    likes: 25,
+    isPublished: false,
+    publishedAt: "2025-01-01",
+  },
+  {
+    id: 4,
+    title: "TypeScript型設計",
+    likes: 18,
+    isPublished: true,
+    publishedAt: "2025-01-20",
+  },
 ];
 
-const formatActiveAdultUsers = (users) => {
-  return users
-    .filter((user) => {
-      return user.isActive && user.age >= 20;
+const buildArticleList = (articles) => {
+  return articles
+    .filter((article) => {
+      return article.isPublished && article.likes > 0;
     })
     .sort((a, b) => {
-      return a.age - b.age;
+      return new Date(b.publishedAt) - new Date(a.publishedAt);
     })
-    .map((user) => {
-      return { id: user.id, label: `${user.name}（${user.age}）` };
+    .map(({ id, title, likes, publishedAt }) => {
+      return {
+        id: id,
+        title: title,
+        likeLabel: `いいね ${likes}件`,
+        publishedAt,
+      };
     });
 };
 
-console.log(formatActiveAdultUsers(users));
+console.log(buildArticleList(articles));
