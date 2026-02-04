@@ -1,66 +1,53 @@
-const flags = [true, false, true, true, false];
+const prices = [100, 250, 400, 80];
 
-const trueCount = flags =>
-  flags.reduce((acc, flag) => {
-    if (flag === true) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
+const selectPrice = prices =>
+  prices.filter((price) =>
+    price >= 100).map((price) =>
+      Math.round(price * 1.1));
 
-console.log(trueCount(flags));
+console.log(selectPrice(prices));
 
-
-const users = [
-  { name: "Taro", age: 18 },
-  { name: "Hanako", age: 22 },
-  { name: "Jiro", age: 30 }
+const actions = [
+  { type: "login" },
+  { type: "logout" },
+  { type: "login" },
+  { type: "login" },
+  { type: "logout" }
 ];
 
-
-const usersCount = users =>
-  users.reduce((acc, user) => {
-    if (user.age >= 20) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-
-console.log(usersCount(users));
-
-const orders = [
-  { amount: 1000, status: "completed" },
-  { amount: 500, status: "pending" },
-  { amount: 2000, status: "completed" }
-];
-
-
-const ordersCount = orders =>
-  orders.reduce((acc, order) => {
-    if (order.status === "completed") {
-      return acc + order.amount;
-    }
-    return acc;
-  }, 0);
-
-console.log(ordersCount(orders));
-
-
-const members = [
-  { name: "Taro", role: "admin" },
-  { name: "Hanako", role: "user" },
-  { name: "Jiro", role: "admin" },
-  { name: "Ken", role: "user" }
-];
-
-const selectMembers = members => 
-  members.reduce((acc, member)=>{
-    acc[member.role] = (acc[member.role] ?? 0) + 1;
+const actionCount = actions =>
+  actions.reduce((acc, action) => {
+    acc[action.type] = (acc[action.type] ?? 0) + 1
     return acc;
   }, {});
 
-  console.log(selectMembers(members));
+console.log(actionCount(actions));
 
+const settings = {
+  theme: "dark"
+};
 
+const { theme, lang = "ja" } = settings;
 
+console.log(settings);
 
+const users = [
+  { name: "Taro", age: 17 },
+  { name: "Hanako", age: 22 },
+  { name: "Jiro", age: 19 },
+  { name: "Ken", age: 30 }
+];
+
+const userCount = users =>
+  users.reduce((acc, user) => {
+    return acc + ((user.age >= 20) ? 1 : 0)
+    
+  }, 0)
+console.log(userCount(users));
+
+const a = [1, 2];
+const b = [3, 4];
+
+const newArray = a.concat(b);
+
+console.log(newArray);
