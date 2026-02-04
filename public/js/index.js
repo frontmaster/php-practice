@@ -1,53 +1,44 @@
-const prices = [100, 250, 400, 80];
-
-const selectPrice = prices =>
-  prices.filter((price) =>
-    price >= 100).map((price) =>
-      Math.round(price * 1.1));
-
-console.log(selectPrice(prices));
-
-const actions = [
-  { type: "login" },
-  { type: "logout" },
-  { type: "login" },
-  { type: "login" },
-  { type: "logout" }
+const users = [
+  { id: 1, name: "Taro", age: 20 },
+  { id: 2, name: "Hanako", age: 17 },
+  { id: 3, name: "Jiro", age: 25 }
 ];
 
-const actionCount = actions =>
-  actions.reduce((acc, action) => {
-    acc[action.type] = (acc[action.type] ?? 0) + 1
+const newUser = users =>
+  users.map(({ name, age }) =>
+    ({ name, age }));
+
+console.log(newUser(users));
+
+const nums = [1, 2, 3, 4, 5];
+
+const newNums = nums =>
+  nums.reduce((acc, num) => {
+    acc.push(num * num);
     return acc;
-  }, {});
+  }, []);
 
-console.log(actionCount(actions));
+console.log(newNums(nums));
 
-const settings = {
-  theme: "dark"
+const name = "Taro";
+const score = 80;
+
+const obj = { name, score };
+console.log(obj);
+
+const flags = [true, false, true, false, true];
+const newFlag = flags =>
+  flags.filter((flag) =>
+    flag === true);
+
+console.log(newFlag(flags));
+
+const user = {
+  name: "Taro",
+  age: 20,
+  country: "Japan"
 };
 
-const { theme, lang = "ja" } = settings;
+const newObj = { ...user, age: 21 }
 
-console.log(settings);
-
-const users = [
-  { name: "Taro", age: 17 },
-  { name: "Hanako", age: 22 },
-  { name: "Jiro", age: 19 },
-  { name: "Ken", age: 30 }
-];
-
-const userCount = users =>
-  users.reduce((acc, user) => {
-    return acc + ((user.age >= 20) ? 1 : 0)
-    
-  }, 0)
-console.log(userCount(users));
-
-const a = [1, 2];
-const b = [3, 4];
-
-const newArray = a.concat(b);
-
-console.log(newArray);
+console.log(newObj);
