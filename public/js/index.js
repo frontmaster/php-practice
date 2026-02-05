@@ -1,44 +1,41 @@
+const nums = [4, 6, 8];
+
+const newNum = nums =>
+  nums.map((num) =>
+    num * 2);
+
+console.log(newNum(nums));
+
 const users = [
-  { id: 1, name: "Taro", age: 20 },
-  { id: 2, name: "Hanako", age: 17 },
-  { id: 3, name: "Jiro", age: 25 }
+  { name: "Taro", score: 80 },
+  { name: "Hanako", score: 45 },
+  { name: "Jiro", score: 90 }
 ];
 
+
 const newUser = users =>
-  users.map(({ name, age }) =>
-    ({ name, age }));
+  users.filter((user) =>
+    user.score >= 60).map((user) =>
+      user.name);
 
 console.log(newUser(users));
 
-const nums = [1, 2, 3, 4, 5];
+const numbers = [10, 20, 30];
 
-const newNums = nums =>
-  nums.reduce((acc, num) => {
-    acc.push(num * num);
-    return acc;
-  }, []);
+const newArr = numbers =>
+  numbers.reduce((acc, number) => {
+    return acc + number;
+  }, 0);
 
-console.log(newNums(nums));
-
-const name = "Taro";
-const score = 80;
-
-const obj = { name, score };
-console.log(obj);
-
-const flags = [true, false, true, false, true];
-const newFlag = flags =>
-  flags.filter((flag) =>
-    flag === true);
-
-console.log(newFlag(flags));
+console.log(newArr(numbers));
 
 const user = {
-  name: "Taro",
-  age: 20,
-  country: "Japan"
+  id: 1,
+  settings: {
+    theme: "dark",
+    lang: "ja"
+  }
 };
 
-const newObj = { ...user, age: 21 }
-
-console.log(newObj);
+const { theme } = user.settings;
+console.log(theme);
