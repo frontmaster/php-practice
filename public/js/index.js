@@ -1,41 +1,47 @@
-const nums = [4, 6, 8];
+const nums = [1, 2, 3, 4];
 
-const newNum = nums =>
+const numArray = nums =>
   nums.map((num) =>
     num * 2);
 
-console.log(newNum(nums));
+console.log(numArray(nums));
 
 const users = [
-  { name: "Taro", score: 80 },
-  { name: "Hanako", score: 45 },
-  { name: "Jiro", score: 90 }
+  { id: 1, active: true },
+  { id: 2, active: false },
+  { id: 3, active: true },
 ];
 
-
-const newUser = users =>
+const userArray = users =>
   users.filter((user) =>
-    user.score >= 60).map((user) =>
-      user.name);
+    user.active);
 
-console.log(newUser(users));
+console.log(userArray(users));
 
-const numbers = [10, 20, 30];
+const scores = [55, 70, 82, 90, 48];
 
-const newArr = numbers =>
-  numbers.reduce((acc, number) => {
-    return acc + number;
-  }, 0);
+const arr = [];
 
-console.log(newArr(numbers));
+for (let i = 0; i < scores.length; i++) {
+  if (scores[i] >= 60) {
+    arr.push(scores[i]);
+  }
+}
+console.log(arr);
 
 const user = {
   id: 1,
-  settings: {
-    theme: "dark",
-    lang: "ja"
-  }
+  name: 'Taro',
 };
 
-const { theme } = user.settings;
-console.log(theme);
+const obj = { ...user, role: "admin" };
+console.log(obj);
+
+// この関数をアロー関数にしてください
+// function isAdult(age) {
+//   return age >= 20;
+// }
+
+const isAdult = age =>
+  age >= 20;
+
