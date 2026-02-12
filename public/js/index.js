@@ -1,48 +1,28 @@
 const users = [
   { id: 1, age: 25, active: true },
-  { id: 2, age: 17, active: false },
-  { id: 3, age: 32, active: true },
+  { id: 2, age: 17, active: true },
+  { id: 3, age: 40, active: false },
 ];
 
-const usersMap = users =>
-  users.filter(({ age, active }) =>
-    active && age >= 20).map(({ id }) =>
-      ({ id }));
+const userObj = users =>
+  users
+    .filter(({ active }) => active)
+    .map(({ id, age }) => ({ id, canLogin: age >= 20 }));
 
-console.log(usersMap(users));
+console.log(userObj(users));
 
+const products = [
+  { id: 1, price: 1000, taxRate: 0.1 },
+  { id: 2, price: 2000, taxRate: 0.1 },
+];
 
-const userArray = [];
+const productsObj = products =>
+  products.map(({ id, price, taxRate }) => ({ id, price, priceWithTax: price + price * taxRate }));
 
-for (let i = 0; i < users.length; i++) {
-  if (users[i].active && users[i].age >= 20) {
-    userArray.push({ id: users[i].id });
-  }
-}
+console.log(productsObj(products));
 
-console.log(userArray);
+const scores = [30, 60, 80];
 
-const nums = [1, 2, 3, 4, 5];
+const scoresArray = scores => scores.map((score) => score >= 60 ? "pass" : "fail");
 
-const numsArray = [];
-
-for (let i = 0; i < nums.length; i++) {
-  if (nums[i] % 2 === 0) {
-    numsArray.push(nums[i]);
-  }
-}
-
-console.log(numsArray);
-
-
-const product = { id: 1, price: 1000 };
-
-const newProduct = { ...product, price: 1200 }
-console.log(newProduct);
-
-// アロー関数に
-function isEven(num) {
-  return num % 2 === 0;
-}
-
-const isEven = num => num % 2 === 0;
+console.log(scoresArray(scores));
