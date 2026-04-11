@@ -396,4 +396,12 @@ input, button, textarea, select {
   margin-bottom: 10px;
 }
 
+.p-forgot-password-sent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
 /*# sourceMappingURL=style.css.map */

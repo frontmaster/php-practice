@@ -1,0 +1,125 @@
+/* =========================
+   Modern CSS Reset (Practical)
+   ========================= */
+
+/* 1. box-sizing（最重要） */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. デフォルト余白リセット */
+body, h1, h2, h3, h4, h5, h6,
+p, ul, ol, li, figure, figcaption,
+blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. ベース設定 */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+/* 4. リスト */
+ul, ol {
+  list-style: none;
+}
+
+/* 5. メディア */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. フォーム */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 7. ボタン */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 8. リンク */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 9. テキスト折り返し改善 */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 10. テキストエリア */
+textarea {
+  resize: vertical;
+}
+
+.main{
+    margin: 0 auto;
+    width: 450px;
+}
+.mainTitle{
+    text-align: center;
+    color: #1760a0;
+}
+.inputArea{
+    
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+.input{
+    width: 300px;
+    margin-right: 20px;
+}
+.c-btn{
+    background-color: #1760a0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    color: #dbedf0;
+    font-weight: bold;
+    width: 80px;
+    height: 35px;
+    padding: 3px;
+    box-sizing: border-box;
+
+}
+.btn-complete{
+    margin:0 10px;
+}
+.btn-return{
+    margin:0 10px;
+}
+.inCompleteArea{
+    margin-top: 30px;
+    border: 2px solid #1760a0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+    
+}
+
+.completeArea{
+    margin-top: 30px;
+    border: 2px solid #1760a0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.todoBox{
+    display: flex;
+    align-items: center;
+}
+.btnArea{
+    display: flex;
+}
