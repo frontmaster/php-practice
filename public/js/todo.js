@@ -5,18 +5,20 @@ const onClickAdd = () => {
     
     // li生成
     const li = document.createElement("li");
-    console.log(li);
 
     // div生成
     const div = document.createElement("div");
     div.className = "todoBox";
-    console.log(div);
 
     // p生成
     const p = document.createElement("p");
     p.className = "todo-item";
     p.innerText = inputText;
-    console.log(p);
+    
+    div.appendChild(p);
+    li.appendChild(div);
+    
+    document.getElementById("incomplete-list").appendChild(li);
 }
 
 document.getElementById("add-button").addEventListener("click", onClickAdd);
