@@ -20,7 +20,14 @@ const onClickAdd = () => {
     completeButton.innerText = "完了";
     completeButton.className = "c-btn btn-complete";
     completeButton.addEventListener("click", () => {
-        alert("完了");
+        const moveTarget = completeButton.closest("li");
+        completeButton.nextElementSibling.remove();
+        completeButton.remove();
+        const backButton = document.createElement("button");
+        backButton.innerText = "戻す";
+        backButton.className = "c-btn"
+        moveTarget.firstElementChild.appendChild(backButton);
+        document.getElementById("complete-list").appendChild(moveTarget);
     });
 
     // button(削除)タグ生成
