@@ -3,6 +3,11 @@ const onClickAdd = () => {
     const inputText = document.getElementById("add-text").value;
     document.getElementById("add-text").value = "";
 
+    createIncompleteTodo(inputText);
+
+}
+
+const createIncompleteTodo = (todo) => {
     // li生成
     const li = document.createElement("li");
 
@@ -13,7 +18,7 @@ const onClickAdd = () => {
     // p生成
     const p = document.createElement("p");
     p.className = "todo-item";
-    p.innerText = inputText;
+    p.innerText = todo;
 
     // button(完了)タグ生成
     const completeButton = document.createElement("button");
@@ -26,6 +31,11 @@ const onClickAdd = () => {
         const backButton = document.createElement("button");
         backButton.innerText = "戻す";
         backButton.className = "c-btn"
+        backButton.addEventListener("click", () => {
+            const todoText = backButton.previousElementSibling.innerText;
+            createIncompleteTodo(todoText);
+            backButton.closest("li").remove();
+        });
         moveTarget.firstElementChild.appendChild(backButton);
         document.getElementById("complete-list").appendChild(moveTarget);
     });
@@ -46,5 +56,4 @@ const onClickAdd = () => {
 
     document.getElementById("incomplete-list").appendChild(li);
 }
-
 document.getElementById("add-button").addEventListener("click", onClickAdd);

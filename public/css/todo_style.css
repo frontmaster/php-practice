@@ -71,6 +71,10 @@ textarea {
     text-align: center;
     color: #1760a0;
 }
+.subTitle{
+    text-align: center;
+    color: #1760a0;
+}
 .inputArea{
     
     display: flex;
@@ -105,7 +109,7 @@ textarea {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    
+    height: 300px;
     
 }
 
@@ -115,6 +119,7 @@ textarea {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
+    height: 300px;
 }
 .todoBox{
     display: flex;
