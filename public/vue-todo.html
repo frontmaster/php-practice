@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo(Vue版)</title>
+    <link rel="stylesheet" href="css/todo_style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="./js/vue-todo.js" defer></script>
+</head>
+
+<body>
+    <div id="app" class="main">
+        <h1 class="mainTitle">todoリスト</h1>
+        <div class="inputArea">
+            <input type="text" class="input" v-model="newTodo" placeholder="TODOを入力してください">
+            <button class="c-btn btn-input" @click="addTodo">追加</button>
+        </div>
+
+        <div class="inCompleteArea">
+            <h2 class="subTitle">未完了のTODO</h2>
+            <ul>
+                <li v-for="todo in incompleteTodos" :key="todo.id">
+                    <div class="todoBox">
+                        <p class="todo-item">{{ todo.text }}</p>
+                        <button class="c-btn btn-complete" @click="completeTodo(todo)">完了</button>
+                        <button class="c-btn btn-delete" @click="deleteTodo(todo.id)">削除</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="completeArea">
+            <h2 class="subTitle">完了したTODO</h2>
+            <ul>
+                <li v-for="todo in completeTodos" :key="todo.id">
+                    <div class="todoBox">
+                        <p class="todo-item">{{ todo.text }}</p>
+                        <button class="c-btn" @click="backTodo(todo)">戻す</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
