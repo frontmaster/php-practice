@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+  <script src="./js/vue-main.js" defer></script>
+  <title>Vue練習</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" placeholder="名前を入力してください" v-model="newName">
+    <input type="text" placeholder="年齢を入力してください" v-model="newAge">
+    <button @click="addInfo">追加</button>
+
+    <ul>
+      <li v-for="user in users" :key="user.id">
+        {{ user.name }} ({{ user.age }})
+        <button @click="deleteInfo">削除</button>
+      </li>
+      
+    </ul>
+  </div>
+
+
+</body>
+
+</html>

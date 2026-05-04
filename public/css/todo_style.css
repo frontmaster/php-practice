@@ -98,6 +98,17 @@ textarea {
     box-sizing: border-box;
 
 }
+.btnArea{
+  display: flex;
+}
+.btn-input{
+  margin-right: 10px;
+  
+}
+.btn-all{
+  margin-right: 10px;
+  
+}
 .btn-complete{
     margin:0 10px;
 }
@@ -126,4 +137,8 @@ textarea {
 }
 .btnArea{
     display: flex;
+}
+
+.todo-item{
+  margin-right: 30px;
 }

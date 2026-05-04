@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // DB接続
     if (empty($errors)) {
         try {
-            $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
+            $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND is_deleted  = 0 LIMIT 1');
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
             $user = $stmt->fetch();
@@ -86,7 +86,7 @@ include 'partials/header.php';
             <a href="forgot_password.php" class="p-login__link">パスワードを忘れた方はこちら</a>
         </form>
     </div>
-    
+
 </section>
 
 <?php include 'partials/footer.php'; ?>

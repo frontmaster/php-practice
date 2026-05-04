@@ -16,6 +16,7 @@
             <?php if (!empty($_SESSION['user_id'])): ?>
                 <a href="../mypage.php" class="l-header__link">マイページ</a>
                 <a href="../logout.php" class="l-header__link">ログアウト</a>
+                <a href="../withdraw_confirm.php" class="l-header__link">退会</a>
             <?php else: ?>
                 <a href="../login.php" class="l-header__link">ログイン</a>
                 <a href="../register.php" class="l-header__link">ユーザー登録</a>

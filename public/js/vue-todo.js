@@ -4,40 +4,54 @@ createApp({
     data() {
         return {
             newTodo: "",
-            todos: []
+            todos: [],
+            editingTodo: null,
         };
     },
-    computed:{
-        incompleteTodos(){
+    computed: {
+        incompleteTodos() {
             return this.todos.filter(todo => !todo.done);
         },
-        completeTodos(){
+        completeTodos() {
             return this.todos.filter(todo => todo.done);
         }
     },
 
-    methods:{
-        addTodo(){
-            if(!this.newTodo.trim()) return;
+    methods: {
+        addTodo() {
+            if (!this.newTodo.trim()) return;
 
             this.todos.push({
-                id:Date.now(),
-                text:this.newTodo,
-                done:false
+                id: Date.now(),
+                text: this.newTodo,
+                done: false
             });
             this.newTodo = "";
         },
-        
-        completeTodo(todo){
+
+        completeTodo(todo) {
             todo.done = true;
         },
-        
-        backTodo(todo){
+
+        backTodo(todo) {
             todo.done = false;
         },
 
-        deleteTodo(id){
+        deleteTodo(id) {
             this.todos = this.todos.filter(todo => todo.id !== id);
-        }
+        },
+
+        editTodo(todo) {
+            this.editingTodo = todo;
+            this.newTodo = todo.text;
+        },
+
+        updateTodo() {
+            if (!this.newTodo.trim()) return;
+
+            this.editingTodo.text = this.newTodo;
+            this.editingTodo = null;
+            this.newTodo = ""
+        },
     }
 }).mount("#app");

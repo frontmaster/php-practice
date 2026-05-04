@@ -15,7 +15,10 @@
         <h1 class="mainTitle">todoリスト</h1>
         <div class="inputArea">
             <input type="text" class="input" v-model="newTodo" placeholder="TODOを入力してください">
-            <button class="c-btn btn-input" @click="addTodo">追加</button>
+            <div class="btnArea">
+                <button class="c-btn btn-input" v-if="editingTodo" @click="updateTodo">更新</button>
+                <button class="c-btn btn-input" v-else @click="addTodo">追加</button>
+            </div>
         </div>
 
         <div class="inCompleteArea">
@@ -23,8 +26,9 @@
             <ul>
                 <li v-for="todo in incompleteTodos" :key="todo.id">
                     <div class="todoBox">
-                        <p class="todo-item">{{ todo.text }}</p>
+                        <p class="todo-item">{{ todo.text }} </p>
                         <button class="c-btn btn-complete" @click="completeTodo(todo)">完了</button>
+                        <button class="c-btn btn-complete" @click="editTodo(todo)">編集</button>
                         <button class="c-btn btn-delete" @click="deleteTodo(todo.id)">削除</button>
                     </div>
                 </li>
