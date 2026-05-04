@@ -18,7 +18,8 @@
     <ul>
       <li v-for="user in users" :key="user.id">
         {{ user.name }} ({{ user.age }})
-        <button @click="deleteInfo">削除</button>
+        <button @click="deleteInfo(user.id)">削除</button>
+        <button @click="editInfo(user.id)">編集</button>
       </li>
       
     </ul>
