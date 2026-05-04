@@ -13,13 +13,15 @@
   <div id="app">
     <input type="text" placeholder="名前を入力してください" v-model="newName">
     <input type="text" placeholder="年齢を入力してください" v-model="newAge">
-    <button @click="addInfo">追加</button>
+    <button v-if="editingUser" @click="updateInfo">更新</button>
+    <button v-else @click="addInfo">追加</button>
+    
 
     <ul>
       <li v-for="user in users" :key="user.id">
         {{ user.name }} ({{ user.age }})
         <button @click="deleteInfo(user.id)">削除</button>
-        <button @click="editInfo(user.id)">編集</button>
+        <button @click="editInfo(user)">編集</button>
       </li>
       
     </ul>
