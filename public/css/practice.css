@@ -1,0 +1,39 @@
+.inputArea{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    width: 60px;
+    height: 30px;
+}
+
+.btn-add{
+    width: 60px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-sort{
+    width: 90px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.input-title{
+    margin-bottom: 30px;
+    width: 200px;
+}
+
+.input-text{
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.item{
+    border: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+.done{
+    text-decoration: line-through;
+}

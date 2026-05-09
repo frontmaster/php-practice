@@ -3,45 +3,93 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      newName: "",
-      newAge: "",
-      users: [],
-      editingUser: null,
+      newTitle: "",
+      newContent: "",
+      editingItems: null,
+      keyword: "",
+      sortType: "new",
+      filter: "all",
+      items: [],
     }
   },
 
   methods: {
-    addInfo() {
-      if (!this.newName.trim() || !this.newAge.trim()) return;
-      this.users.push({
+    addItem() {
+      if (!this.newTitle.trim() || !this.newContent.trim()) return;
+
+      this.items.push({
         id: Date.now(),
-        name: this.newName,
-        age: Number(this.newAge)
+        title: this.newTitle,
+        content: this.newContent,
+        completed: false,
       });
-      this.newName = "";
-      this.newAge = "";
+
+      this.newTitle = "";
+      this.newContent = "";
     },
 
-    deleteInfo(id) {
-      this.users = this.users.filter(user => user.id !== id);
+    deleteItem(id) {
+      this.items = this.items.filter(item => item.id !== id);
     },
 
-    editInfo(user) {
-      this.editingUser = user;
-      this.newName = user.name;
-      this.newAge = user.age;
+    editItem(item) {
+      this.editingItems = item;
+      this.newTitle = this.editingItems.title;
+      this.newContent = this.editingItems.content
     },
 
-    updateInfo(){
-      if(!this.newName.trim() || !this.newAge.trim()) return;
+    updateItem() {
+      if (!this.newTitle.trim() || !this.newContent.trim()) return;
 
-      this.editingUser.name = this.newName;
-      this.editingUser.age = Number(this.newAge);
+      this.editingItems.title = this.newTitle;
+      this.editingItems.content = this.newContent;
 
-      this.editingUser = null;
-      this.newName = "";
-      this.newAge = "";
+      this.editingItems = null;
+      this.newTitle = "";
+      this.newContent = "";
+    },
+
+    changeFlg(item) {
+      item.completed = !item.completed;
+    },
+
+
+  },
+
+  computed: {
+    filteredItems() {
+      let result = this.items;
+
+      if (this.keyword.trim()) {
+        result = result.filter(item =>
+          item.title.includes(this.keyword)
+        );
+      }
+
+      if (this.filter === "complete") {
+        result = result.filter(item => item.completed);
+      } else if (this.filter === "active") {
+        result = result.filter(item => !item.completed)
+      }
+
+      if (this.sortType === "new") {
+        result = [...result].sort((a, b) => b.id - a.id);
+      } else if (this.sortType === "old") {
+        result = [...result].sort((a, b) => a.id - b.id);
+      }
+      return result;
+    },
+
+    totalCount() {
+      return this.items.length;
+    },
+
+    completedCount() {
+      return this.items.filter(item => item.completed).length;
+    },
+
+    activeCount() {
+      return this.items.filter(item => !item.completed).length;
     }
-
   }
 }).mount("#app");

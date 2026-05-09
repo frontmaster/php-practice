@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./css/practice.css">
   <!-- Vue 3 CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
   <script src="./js/vue-main.js" defer></script>
@@ -11,20 +12,32 @@
 
 <body>
   <div id="app">
-    <input type="text" placeholder="名前を入力してください" v-model="newName">
-    <input type="text" placeholder="年齢を入力してください" v-model="newAge">
-    <button v-if="editingUser" @click="updateInfo">更新</button>
-    <button v-else @click="addInfo">追加</button>
-    
-
+    <div class="inputArea">
+      <h3>タイトル </h3>
+      <input type="text" v-model="newTitle" class="input-title" placeholder="タイトルを入力してください">
+      <textarea v-model="newContent" class="input-text"></textarea>
+      <button v-if="editingItems" @click="updateItem" class="btn">更新</button>
+      <button v-else @click="addItem" class="btn-add">追加</button>
+      <button class="btn-sort" @click="sortType = 'new'">新しい順</button>
+      <button class="btn-sort" @click="sortType = 'old'">古い順</button>
+      <button class="btn-sort" @click="filter = 'all'">すべて</button>
+      <button class="btn-sort" @click="filter = 'complete'">完了のみ</button>
+      <button class="btn-sort" @click="filter = 'active'">未完了のみ</button>
+      <input type="text" v-model="keyword" class="input-text" placeholder="タイトルを入力してください">
+      <p>全体:{{ totalCount }}件</p>
+      <p>完了:{{ completedCount }}件</p>
+      <p>未完了:{{ activeCount }}件</p>
+    </div>
     <ul>
-      <li v-for="user in users" :key="user.id">
-        {{ user.name }} ({{ user.age }})
-        <button @click="deleteInfo(user.id)">削除</button>
-        <button @click="editInfo(user)">編集</button>
+      <li v-for="item in filteredItems" :key="item.id" @click="changeFlg(item)" :class="{done: item.completed}">
+        <p>{{ item.title}}</p>
+        <p>{{ item.content}}</p>
+        <button @click.stop="deleteItem(item.id)">削除</button>
+        <button @click.stop="editItem(item)">編集</button>
       </li>
-      
     </ul>
+
+
   </div>
 
 
