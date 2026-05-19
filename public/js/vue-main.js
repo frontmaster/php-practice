@@ -3,93 +3,71 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      newTitle: "",
-      newContent: "",
-      editingItems: null,
+      newTodo: "",
       keyword: "",
-      sortType: "new",
+      todos: [],
+      editingTodo: null,
       filter: "all",
-      items: [],
+      sortType: "new",
     }
   },
 
   methods: {
-    addItem() {
-      if (!this.newTitle.trim() || !this.newContent.trim()) return;
+    addTodo() {
+      if (!this.newTodo.trim()) return;
 
-      this.items.push({
+      this.todos.push({
         id: Date.now(),
-        title: this.newTitle,
-        content: this.newContent,
+        name: this.newTodo,
         completed: false,
       });
 
-      this.newTitle = "";
-      this.newContent = "";
+      this.newTodo = "";
     },
 
-    deleteItem(id) {
-      this.items = this.items.filter(item => item.id !== id);
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
     },
 
-    editItem(item) {
-      this.editingItems = item;
-      this.newTitle = this.editingItems.title;
-      this.newContent = this.editingItems.content
+    editTodo(todo) {
+      this.editingTodo = todo;
+      this.newTodo = todo.name;
     },
 
-    updateItem() {
-      if (!this.newTitle.trim() || !this.newContent.trim()) return;
+    updateTodo() {
+      if (!this.newTodo.trim()) return;
 
-      this.editingItems.title = this.newTitle;
-      this.editingItems.content = this.newContent;
+      this.editingTodo.name = this.newTodo;
 
-      this.editingItems = null;
-      this.newTitle = "";
-      this.newContent = "";
+      this.newTodo = "";
+      this.editingTodo = null;
     },
 
-    changeFlg(item) {
-      item.completed = !item.completed;
-    },
-
-
+    changeFlg(todo) {
+      todo.completed = !todo.completed;
+    }
   },
 
   computed: {
-    filteredItems() {
-      let result = this.items;
+    filteredTodos() {
+      let result = this.todos;
 
-      if (this.keyword.trim()) {
-        result = result.filter(item =>
-          item.title.includes(this.keyword)
-        );
+      if (this.filter === "inComplete") {
+        result = result.filter(todo => !todo.completed);
+      } else if (this.filter === "complete") {
+        result = result.filter(todo => todo.completed);
       }
 
-      if (this.filter === "complete") {
-        result = result.filter(item => item.completed);
-      } else if (this.filter === "active") {
-        result = result.filter(item => !item.completed)
+      if (this.keyword.trim()) {
+        result = result.filter(todo => todo.name.toLowerCase().includes(this.keyword.toLowerCase()));
       }
 
       if (this.sortType === "new") {
         result = [...result].sort((a, b) => b.id - a.id);
-      } else if (this.sortType === "old") {
+      } else {
         result = [...result].sort((a, b) => a.id - b.id);
       }
       return result;
-    },
-
-    totalCount() {
-      return this.items.length;
-    },
-
-    completedCount() {
-      return this.items.filter(item => item.completed).length;
-    },
-
-    activeCount() {
-      return this.items.filter(item => !item.completed).length;
     }
   }
 }).mount("#app");

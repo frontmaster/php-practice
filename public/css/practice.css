@@ -1,39 +1,214 @@
-.inputArea{
-    display: flex;
-    flex-direction: column;
+/* =========================
+   Modern CSS Reset (Practical)
+   ========================= */
+
+/* 1. box-sizing（最重要） */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-.btn{
+/* 2. デフォルト余白リセット */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. ベース設定 */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+}
+
+/* 4. リスト */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 5. メディア */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 6. フォーム */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* 7. ボタン */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 8. リンク */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 9. テキスト折り返し改善 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 10. テキストエリア */
+textarea {
+    resize: vertical;
+}
+.l-main {
+    margin: 0 auto;
+}
+.p-todo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    width: 600px;
+    
+    padding: 20px;
+    box-sizing: border-box;
+}
+.p-todo__title {
+    margin-bottom: 20px;
+    color: #1760a0;
+}
+.p-todo__input {
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+.p-todo__input--search {
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+.p-todo__filter{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    margin-bottom: 30px;
+}
+.p-todo__sort{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+.p-todo__inputArea {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.p-todo__listArea{
+ margin-top: 30px;   
+}
+.p-todo__list {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #fafafa;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 70px;
+}
+.p-todo__text{
+    margin-right: 10px;
+}
+.c-btn {
     width: 60px;
     height: 30px;
+    box-shadow: 2px 2px 4px gray;
+}
+.p-todo__btn {
+    background-color: #1760a0;
+    color: #fff;
 }
 
-.btn-add{
+.p-todo__btn--sort {
+    background-color: #1760a0;
+    color: #fff;
+    width: 100px;
+}
+.p-todo__operationArea{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+.p-todo__btn--edit{
+    background-color: #4dabf7;
+    color: #fff;
+}
+.p-todo__btn--delete{
+    background-color: #dc3545;
+    color: #fff;
+}
+.c-input {
+    border: 1px solid gray;
+}
+.btn-add {
     width: 60px;
     height: 30px;
     margin-bottom: 20px;
 }
 
-.btn-sort{
+.btn-sort {
     width: 90px;
     height: 30px;
     margin-bottom: 20px;
 }
-.input-title{
+.input-title {
     margin-bottom: 30px;
     width: 200px;
 }
 
-.input-text{
+.input-text {
     margin-bottom: 30px;
     width: 300px;
 }
 
-.item{
+.item {
     border: 1px solid #333;
     margin-bottom: 30px;
 }
 
-.done{
+.is-done .p-todo__text {
     text-decoration: line-through;
 }

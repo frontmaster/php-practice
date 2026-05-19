@@ -12,32 +12,47 @@
 
 <body>
   <div id="app">
-    <div class="inputArea">
-      <h3>タイトル </h3>
-      <input type="text" v-model="newTitle" class="input-title" placeholder="タイトルを入力してください">
-      <textarea v-model="newContent" class="input-text"></textarea>
-      <button v-if="editingItems" @click="updateItem" class="btn">更新</button>
-      <button v-else @click="addItem" class="btn-add">追加</button>
-      <button class="btn-sort" @click="sortType = 'new'">新しい順</button>
-      <button class="btn-sort" @click="sortType = 'old'">古い順</button>
-      <button class="btn-sort" @click="filter = 'all'">すべて</button>
-      <button class="btn-sort" @click="filter = 'complete'">完了のみ</button>
-      <button class="btn-sort" @click="filter = 'active'">未完了のみ</button>
-      <input type="text" v-model="keyword" class="input-text" placeholder="タイトルを入力してください">
-      <p>全体:{{ totalCount }}件</p>
-      <p>完了:{{ completedCount }}件</p>
-      <p>未完了:{{ activeCount }}件</p>
-    </div>
-    <ul>
-      <li v-for="item in filteredItems" :key="item.id" @click="changeFlg(item)" :class="{done: item.completed}">
-        <p>{{ item.title}}</p>
-        <p>{{ item.content}}</p>
-        <button @click.stop="deleteItem(item.id)">削除</button>
-        <button @click.stop="editItem(item)">編集</button>
-      </li>
-    </ul>
+    <main class="l-main">
+      <div class="p-todo">
+        <h2 class="p-todo__title">ToDoリスト</h2>
+        <div class="p-todo__inputArea">
+          <input type="text" v-model="newTodo" class="c-input p-todo__input">
+          <button v-if="editingTodo" @click="updateTodo" class="c-btn">更新</button>
+          <button v-else @click="addTodo" class="c-btn p-todo__btn">追加</button>
+        </div>
+        <div class="p-todo__controls">
+          <div class="p-todo__search">
+            <input type="text" v-model="keyword" placeholder="検索ワードを入力してください" class="c-input p-todo__input--search">
+          </div>
+
+          <div class="p-todo__filter">
+            <button @click="filter = 'all'" class="c-btn p-todo__btn">すべて</button>
+            <button @click="filter = 'inComplete'" class="c-btn p-todo__btn">未完了</button>
+            <button @click="filter = 'complete'" class="c-btn p-todo__btn">完了</button>
+          </div>
+
+          <div class="p-todo__sort">
+            <button @click="sortType = 'new'" class="c-btn p-todo__btn--sort">新しい順</button>
+            <button @click="sortType = 'old'" class="c-btn p-todo__btn--sort">古い順</button>
+          </div>
 
 
+        </div>
+
+        <ul class="p-todo__listArea">
+          <li v-for="todo in filteredTodos" :key="todo.id" :class="['p-todo__list', { 'is-done': todo.completed }]">
+            <span class="p-todo__text">
+              {{ todo.name }}
+            </span>
+            <div class="p-todo__operationArea">
+              <input type="checkbox" v-model="todo.completed">
+              <button @click.stop="editTodo(todo)" class="c-btn p-todo__btn--edit">編集</button>
+              <button @click.stop="deleteTodo(todo.id)" class="c-btn p-todo__btn--delete">削除</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
   </div>
 
 
